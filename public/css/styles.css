@@ -97,7 +97,8 @@
   margin-right: 10px;
 }
 #buttonpasang{
-  width: 180px;;
+  width: auto;
+  min-width: 180px;
   height: 35px;
   font-family: "League Spartan";
   font-size: 12px;
@@ -107,7 +108,8 @@
   border: none; 
   border-radius: 20px; 
   text-align: center;
-  line-height: 0px;
+  line-height: normal;
+  white-space: nowrap;
 }
 #buttonpasang:active {
     border-color:#14c357;
@@ -125,7 +127,8 @@
 }
 @media (max-width: 1200px) {
   #buttonpasang {
-  width: 140px;
+  width: auto;
+  min-width: 140px;
   height: 32px;
   font-size: 10px;
   padding: 4px 8px; 
@@ -134,7 +137,8 @@
 
 @media (max-width: 992px) {
     #buttonpasang {
-    width: 140px;
+    width: auto;
+    min-width: 140px;
     height: 32px;
     font-size: 10px;
     padding: 4px 8px; 
@@ -143,7 +147,8 @@
   
 @media (max-width: 768px) {
     #buttonpasang {
-    width: 115px;
+    width: auto;
+    min-width: 115px;
     height: 30px;
     font-size: 8px; 
     padding: 2px 4px; 

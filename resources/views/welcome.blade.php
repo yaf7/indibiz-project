@@ -45,31 +45,15 @@
                     </li>
 
                     <!-- Login -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
+                    <li class="nav-item d-flex align-items-center ms-lg-3">
+                        <a class="btn btn-outline-primary btn-sm rounded-pill px-4 fw-bold" href="/login">Login</a>
                     </li>
 
-                    <!-- Registrasi -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Registrasi</a>
-                    </li>
-
-                    <!-- Dropdown for extra links (for mobile) -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            More
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Link 1</a></li>
-                            <li><a class="dropdown-item" href="#">Link 2</a></li>
-                            <li><a class="dropdown-item" href="#">Link 3</a></li>
-                        </ul>
-                    </li>
                 </ul>
 
                 <!-- Button Pasang (Right-aligned) -->
-                <button class="btn btn-custom ms-lg-3" onclick="openWhatsApp1()" id="buttonpasang">
-                    <i class="fa-solid fa-wifi fa-beat-fade"></i> PASANG SEKARANG
+                <button class="btn btn-success rounded-pill px-4 fw-bold shadow-sm ms-lg-3" onclick="openWhatsApp1()" id="buttonpasang" style="background-color: #20c997; border-color: #20c997;">
+                    <i class="fa-solid fa-wifi fa-beat-fade me-2"></i> PASANG SEKARANG
                 </button>
             </div>
         </div>
