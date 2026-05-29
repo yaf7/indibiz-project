@@ -1,72 +1,92 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+
+@section('title', 'Register')
 
 @section('content')
-<div class="container mt-5 pt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-header bg-white text-center border-0 pt-4 pb-0">
-                    <h3 class="fw-bold text-primary">{{ __('Register') }}</h3>
-                    <p class="text-muted mb-0">Buat akun baru Anda</p>
+<div class="col-md-8 col-lg-6 col-xl-5">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h3>{{ __('Buat Akun Baru') }}</h3>
+            <p>Bergabunglah dengan kami hari ini</p>
+        </div>
+
+        <div class="auth-body">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+
+                <div class="form-group mb-4">
+                    <label for="name" class="form-label">{{ __('Nama Lengkap') }}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-light border-right-0"><i class="fas fa-user text-muted"></i></span>
+                        </div>
+                        <input id="name" type="text" class="form-control border-left-0 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Masukkan nama Anda">
+                    </div>
+                    @error('name')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
 
-                <div class="card-body p-4 p-md-5">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="mb-3">
-                            <label for="name" class="form-label fw-semibold">{{ __('Nama Lengkap') }}</label>
-                            <input id="name" type="text" class="form-control form-control-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Masukkan nama Anda">
-
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                <div class="form-group mb-4">
+                    <label for="email" class="form-label">{{ __('Alamat Email') }}</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-light border-right-0"><i class="fas fa-envelope text-muted"></i></span>
                         </div>
+                        <input id="email" type="email" class="form-control border-left-0 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Masukkan email Anda">
+                    </div>
+                    @error('email')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label fw-semibold">{{ __('Alamat Email') }}</label>
-                            <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Masukkan email Anda">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label fw-semibold">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Buat password">
-
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-lock text-muted"></i></span>
+                                </div>
+                                <input id="password" type="password" class="form-control border-left-0 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Buat password">
+                            </div>
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-
-                        <div class="mb-4">
-                            <label for="password-confirm" class="form-label fw-semibold">{{ __('Konfirmasi Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="new-password" placeholder="Ulangi password">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label for="password-confirm" class="form-label">{{ __('Konfirmasi Password') }}</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-light border-right-0"><i class="fas fa-lock text-muted"></i></span>
+                                </div>
+                                <input id="password-confirm" type="password" class="form-control border-left-0" name="password_confirmation" required autocomplete="new-password" placeholder="Ulangi password">
+                            </div>
                         </div>
-
-                        <div class="d-grid mb-3">
-                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">
-                                {{ __('Daftar') }}
-                            </button>
-                        </div>
-                        
-                        <div class="text-center mt-4">
-                            <span class="text-muted">Sudah punya akun?</span>
-                            <a class="text-decoration-none fw-bold" href="{{ route('login') }}">
-                                {{ __('Login di sini') }}
-                            </a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+
+                <div class="d-grid gap-2 mt-2">
+                    <button type="submit" class="btn btn-auth w-100">
+                        <i class="fas fa-user-plus mr-2"></i> {{ __('Daftar Sekarang') }}
+                    </button>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <span class="text-muted">Sudah punya akun?</span>
+                    <a class="auth-link ml-1" href="{{ route('login') }}">
+                        {{ __('Login di sini') }}
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
