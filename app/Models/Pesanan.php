@@ -20,5 +20,6 @@ class Pesanan extends Model
             'pembayaranMelalui',
             'tanggalPemasangan',
             'catatan',
+            'status',
         ];
 }
